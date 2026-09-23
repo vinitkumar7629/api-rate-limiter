@@ -1,5 +1,7 @@
 # API Rate Limiter
 
+🔗 **[Live Demo](https://api-rate-limiter-vkwd.onrender.com/docs)** — try it yourself (may take ~30s to wake up if idle)
+
 A rate limiting middleware built with FastAPI, using the **token bucket algorithm** to control how many requests a client can make in a given time window.
 
 ## What it does
@@ -86,7 +88,7 @@ retry-after: 1
 - [ ] API key-based client identification instead of IP
 - [ ] Automated tests (pytest)
 - [ ] Per-endpoint rate limits instead of a single global limit
-- [ ] Deployed live demo
+- [x] Deployed live demo
 
 ## Author
 
