@@ -23,6 +23,17 @@ class TokenBucket:
         else:
             return False
 
+    def time_until_next_token(self) -> float:
+       """
+       Returns seconds until at least 1 token will be available.
+       Returns 0 if a token is already available.
+       """
+       self._refill()
+       if self.tokens >= 1:
+           return 0
+       return (1 - self.tokens) / self.refill_rate
+
+
 
 
 

@@ -18,9 +18,11 @@ async def rate_limit_middleware(request: Request, call_next):
     bucket = buckets[client_ip]
 
     if not bucket.consume():
+        retry_after = bucket.time_until_next_token()
         return JSONResponse(
             status_code=429,
-            content={"detail": "Rate limit exceeded. Try again later."}
+            content={"detail": "Rate limit exceeded. Try again later."},
+            headers={"Retry-After": str(int(retry_after) + 1)}
         )
 
     response = await call_next(request)
